@@ -8,9 +8,7 @@ def get_student_by_github(github):
     query = """SELECT first_name, last_name, github FROM Students WHERE github = ?"""
     DB.execute(query, (github,))
     row = DB.fetchone()
-    print """\
-Student: %s %s
-Github account: %s"""%(row[0], row[1], row[2])
+    return row
 
 def get_projects_by_title(title):
     query = """SELECT title, description, max_grade FROM Projects WHERE title = ?"""
@@ -30,16 +28,17 @@ Student: %s %s
 Project: %s
 Grade: %s""" % (row[0], row[1], row[2], row[3])
 
-def get_student_grades(first_name, last_name):
-    query = """SELECT first_name, last_name, project_title, grade FROM GradesView WHERE first_name = ? and last_name = ?"""
-    DB.execute(query, (first_name, last_name))
+def get_student_grades(student_github):
+    query = """SELECT first_name, last_name, project_title, grade FROM Grades INNER JOIN Students ON student_github = github WHERE student_github = ?"""
+    DB.execute(query, (student_github,))
     row = DB.fetchone()
-    while row:
-        print """\
-        Student: %s %s
-        Project: %s
-        Grade: %s""" % (row[0], row[1], row[2], row[3])
-        row = DB.fetchone()
+    return row
+    # while row:
+    #     print """\
+    #     Student: %s %s
+    #     Project: %s
+    #     Grade: %s""" % (row[0], row[1], row[2], row[3])
+    #     row = DB.fetchone()
 
 def make_new_student(first_name, last_name, github):
     query = """INSERT into Students values(?, ?, ?)"""

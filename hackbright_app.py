@@ -19,26 +19,27 @@ Title: %s
 Description: %s
 Max Grade: %s""" % (row[0], row[1], row[2])
 
-def get_project_grade(student_github, project_title):
-    query = """SELECT first_name, last_name, project_title, grade FROM Grades INNER JOIN Students ON student_github = github WHERE student_github = ? AND project_title = ?"""
-    DB.execute(query, (student_github, project_title))
-    row = DB.fetchone()
-    print """\
-Student: %s %s
-Project: %s
-Grade: %s""" % (row[0], row[1], row[2], row[3])
+def get_project_grade(project_title):
+    query = """SELECT first_name, last_name, project_title, grade, student_github FROM Grades INNER JOIN Students ON student_github = github WHERE project_title = ?"""
+    DB.execute(query, (project_title,))
+    row = DB.fetchall()
+    return row
+#     print """\
+# Student: %s %s
+# Project: %s
+# Grade: %s""" % (row[0], row[1], row[2], row[3])
 
 def get_student_grades(student_github):
     query = """SELECT first_name, last_name, project_title, grade FROM Grades INNER JOIN Students ON student_github = github WHERE student_github = ?"""
     DB.execute(query, (student_github,))
-    row = DB.fetchone()
+    row = DB.fetchall()
     return row
     # while row:
     #     print """\
     #     Student: %s %s
     #     Project: %s
     #     Grade: %s""" % (row[0], row[1], row[2], row[3])
-    #     row = DB.fetchone()
+
 
 def make_new_student(first_name, last_name, github):
     query = """INSERT into Students values(?, ?, ?)"""

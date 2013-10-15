@@ -2,9 +2,12 @@
     <body>
         <h1>Student: {{first_name}} {{last_name}}</h1>
         <h2>Github account: {{github}}</h2>
-        <p>This student has shown extreme recalcitrance and has generally proved to be unreliable.</p>
-        <p>It is my recommendation that they be put on double-secret probation for the remainder of the course.</p>
-        <p>Here are the grades for every project completed by this user:</p>
-        <h2>Project: {{project_title}} Grade: {{grade}}</h2>
+
+        <ul id = "grades">
+            {% for item in projects %}
+                <li>Project Title: <a href="/projects?project_title={{item[2]}}">{{item[2]}}</a></li>
+                <li> Grade: {{item[3]}}</li>
+            {% endfor %}
+        </ul>
     </body>
 </html>

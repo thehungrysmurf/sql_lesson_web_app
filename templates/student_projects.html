@@ -1,0 +1,11 @@
+<html>
+    <body>
+            Project: {{project_title}}
+            <ul id = "grades">
+            {% for item in student %}
+                <li>Student: <a href="/student?github={{item[4]}}">{{item[0]}} {{item[1]}}</a></li>
+                <li> Grade: {{item[3]}}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

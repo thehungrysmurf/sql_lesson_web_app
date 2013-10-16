@@ -1,15 +1,46 @@
 <html>
+<head>
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+
+</head>
+    <!--<head>
+            <style>
+        body {
+            background-image: url("/static/images/books.jpg");
+            }
+        #menu {
+            background-color: rgba(255, 255, 255, 0.7);
+            }
+
+        #main_box {
+            float: left;
+            height: 500px;
+            width: 500px;
+            margin: 50px 50px 50px 50px;
+            }
+
+        .box {
+        float: left;
+        padding: 10px 20px 10px 20px;
+        margin: 10px 10px 10px 10px;
+        }
+        </style>
+    </head>
+-->
     <body>
+        <div class="box" id="menu">
+            <a href="/add_new_student">Add New Student</a>
+            <a href="/add_new_project">Add New Project</a>
+            <a href="/assign_student_grade">Grade Student</a>
+        </div>
+
+        <div class="box" id="main_box">
         <form action="/student">
         <label for="github">Enter github id: </label>
         <input type="text" name="github" />
         <input type="submit">
         </form>
-<br /><br />
-
-<a href="/add_new_student">Add New Student</a><br />
-<a href="/add_new_project">Add New Project</a><br />
-<a href="/assign_student_grade">Grade Student</a>
+        </div>
 
     </body>
 </html>

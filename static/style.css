@@ -1,0 +1,22 @@
+body {
+    background-image: url("/static/images/books.jpg");
+}
+
+#menu {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 20px 20px 20px 20px;
+}
+
+#main_box {
+    float: left;
+    height: 500px;
+    width: 500px;
+    margin: 75px 50px 50px 50px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.box {
+    float: left;
+    padding: 10px 20px 10px 20px;
+    margin: 10px 10px 10px 10px;
+}
